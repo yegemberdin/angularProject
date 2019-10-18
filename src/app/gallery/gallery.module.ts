@@ -4,6 +4,7 @@ import { GalleryComponent } from './gallery/gallery.component';
 import { GalleryRoutingModuleModule } from './gallery-routing-module.module';
 import {ImgServiceService} from '../img-service.service';
 import {ImageFilterPipe} from '../filter.pipe';
+import {UserDataService} from '../user-data.service';
 
 @NgModule({
   declarations: [GalleryComponent, ImageFilterPipe],
@@ -11,6 +12,6 @@ import {ImageFilterPipe} from '../filter.pipe';
     CommonModule,
     GalleryRoutingModuleModule
   ],
-  providers: [ImgServiceService]
+  providers: [ImgServiceService, UserDataService]
 })
 export class GalleryModule { }

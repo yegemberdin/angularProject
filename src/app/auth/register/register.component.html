@@ -1,24 +1,27 @@
-<form [formGroup]="regForm" (ngSubmit)="onSubmit()" id="register_form">
-  <label>
-    Email:
-  </label>
-  <input class="text_like_input" formControlName="emailFormControl" />
+<form class="card" [formGroup]="regForm" (ngSubmit)="onSubmit()" id="register_form">
+  <fieldset>
+    <legend> Registration </legend>
+    <div class="col-md-12">
+      <label class="form-label">Email </label>
+      <input  name="email"  class="form-control"  formControlName="emailFormControl" />
   <div class="input_message" *ngIf="email.invalid && email.touched">Email is invalid</div>
-  <label>
-    username:
-  </label>
-  <input class="text_like_input" formControlName="usernameFormControl" />
-  <label>
-    Password:
-  </label>
-  <input type="password" class="text_like_input" formControlName="passwordFormControl" />
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Username </label>
+      <input  name="email" class="form-control" formControlName="usernameFormControl" />
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Password </label>
+      <input name="password"   class="form-control" type="password" formControlName="passwordFormControl" />
   <div class="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
-  <label>
-    Confirm Password:
-  </label>
-  <input type="password" class="text_like_input" formControlName="confirmPassword" />
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Confirm Password </label>
+      <input name="password"   class="form-control" type="password"  formControlName="confirmPassword" />
   <div class="input_message" *ngIf="regForm.get('passwordFormControl').value !==
         regForm.get('confirmPassword').value || (confirmPassword.touched &&
             regForm.get('confirmPassword').value === null)" >Passwords are not the same</div>
-  <input [disabled]="!regForm.valid" value="Submit" type="submit" class="button_like_input" />
+    </div>
+    <button class="btn btn-success">Register</button>
+  </fieldset>
 </form>

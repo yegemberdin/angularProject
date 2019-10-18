@@ -3,8 +3,6 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {AuthGuard} from './guards';
 
-
-// @ts-ignore
 const routes: Routes = [
   {
     path: '',
@@ -18,7 +16,7 @@ const routes: Routes = [
       .then(mod => mod.AuthModule)
   },
   {
-    path: '**',
+    path: '',
     redirectTo: '',
     pathMatch: 'full'
   }

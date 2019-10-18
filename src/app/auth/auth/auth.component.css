@@ -5,7 +5,17 @@
 }
 
 .alert {
+  width: 40%;
+  align-self:center ;
+  margin-left: 30%;
+  margin-top: 2%;
+}
+.label1 {
   color: red;
-  text-align: center;
   font-family: monospace;
+}
+.label2 {
+  color: blue;
+  font-family: monospace;
+
 }

@@ -1,12 +1,21 @@
-<form [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
-  <label>
-    Username:
-  </label>
-  <input class="text_like_input" formControlName="usernameFormControl" />
-  <label>
-    Password:
-  </label>
-  <input class="text_like_input" type="password" formControlName="passwordFormControl" />
-  <div class="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
-  <input [disabled]="!logForm.valid" value="Log in" type="submit" class="button_like_input" />
+<form class="card"  [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
+  <fieldset>
+    <legend> Login </legend>
+    <div class="col-md-12">
+      <label class="form-label">Username </label>
+  <input  name="email"  class="form-control" formControlName="usernameFormControl" />
+    </div>
+    <div class="col-md-12">
+      <label class="form-label">Password </label>
+      <input name="password"   class="form-control" type="password" formControlName="passwordFormControl" />
+      <div *ngIf="password.invalid && !logForm.invalid" class="invalid-feedback">
+        <div *ngIf="password?.errors.required">
+          The password field is required
+        </div>
+      </div>
+  <div id="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
+    </div>
+    <button class="btn btn-success">Submit</button>
+
+  </fieldset>
 </form>

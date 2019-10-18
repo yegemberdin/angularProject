@@ -10,7 +10,7 @@ const routes: Routes = [
       .then(mod => mod.GalleryModule)
   },
   {
-    path: 'auth',
+    path: '',
     loadChildren: () => import('./auth/auth.module')
       .then(mod => mod.AuthModule)
   },

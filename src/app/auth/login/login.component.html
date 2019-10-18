@@ -1,0 +1,12 @@
+<form [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
+  <label>
+    Username:
+  </label>
+  <input class="text_like_input" formControlName="usernameFormControl" />
+  <label>
+    Password:
+  </label>
+  <input class="text_like_input" type="password" formControlName="passwordFormControl" />
+  <div class="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
+  <input [disabled]="!logForm.valid" value="Log in" type="submit" class="button_like_input" />
+</form>

@@ -1,0 +1,11 @@
+.label {
+  color: black;
+  text-align: center;
+  font-family: monospace;
+}
+
+.alert {
+  color: red;
+  text-align: center;
+  font-family: monospace;
+}

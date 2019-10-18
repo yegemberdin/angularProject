@@ -1,0 +1,31 @@
+form {
+  display: grid;
+  grid-template-columns: 2fr;
+  grid-gap: 4px;
+}
+#login_form {
+  margin-top: 2%;
+  width: 40%;
+  align-self:center ;
+  margin-left: 30%;
+}
+input {
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  min-height: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 15px;
+}
+
+.button_like_input {
+  font-family: monospace;
+  box-sizing: content-box;
+  margin-top: 20px;
+  height: 40px;
+}
+label {
+  font-family: monospace;
+  font-size: 15px;
+}

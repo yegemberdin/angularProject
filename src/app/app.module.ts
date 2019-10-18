@@ -5,6 +5,9 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModuleModule } from './app-routing-module.module';
 import { NavbarComponent } from './navbar/navbar.component';
+import {AuthGuard} from './guards/index';
+import {UserService} from './services/user.service';
+import {AlertService} from './services/alert.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +20,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [AuthGuard, UserService, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

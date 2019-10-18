@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../User';
 import {UserDataService} from '../../user-data.service';
 import {Router} from '@angular/router';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent implements OnInit {
   public user: User;
 
 
-  constructor(private formBuilder: FormBuilder, private userDataService: UserDataService, private router: Router) {
+  constructor(private formBuilder: FormBuilder, private userDataService: UserDataService, private router: Router, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -46,6 +47,10 @@ export class LoginComponent implements OnInit {
   onLogin = () => {
     this.user = new User(this.email.value, this.username.value, this.password.value);
     this.userDataService.setUserData(this.user);
-    this.router.navigateByUrl('/gallery');
-  };
+    this.userService.login(this.username.value, this.password.value).subscribe(response => {
+      if (response) {
+        this.router.navigateByUrl('/gallery');
+      }
+    });
+  }
 }

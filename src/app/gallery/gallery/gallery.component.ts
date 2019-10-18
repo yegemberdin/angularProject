@@ -2,6 +2,7 @@ import {Component, OnInit, Input, OnChanges} from '@angular/core';
 import {ImgServiceService} from '../../img-service.service';
 import {User} from '../../User';
 import {UserDataService} from '../../user-data.service';
+import {UserService} from '../../services/user.service';
 
 @Component({
   selector: 'app-gallery',
@@ -16,13 +17,17 @@ export class GalleryComponent implements OnChanges {
   public user: User;
   public loggedIn: boolean = false;
 
-  constructor(private imageService: ImgServiceService, private userDataService: UserDataService) {
-    this.userDataService.userData$.subscribe((data) => {
-      this.user = data;
-      if (this.user) {
-        this.loggedIn = true;
-      }
-    })
+  constructor(private imageService: ImgServiceService, ) {
+    // this.userService.userData$.subscribe((data) => {
+    //   this.user = data;
+    //   if (this.user) {
+    //     this.loggedIn = true;
+    //   }
+    // })
+    this.user = JSON.parse(localStorage.getItem('user'))
+    if (this.user) {
+          this.loggedIn = true;
+        }
     console.log(this.filterBy);
     this.visibleImages = this.imageService.getImages();
 

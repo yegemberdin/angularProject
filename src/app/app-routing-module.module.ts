@@ -1,21 +1,24 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from './guards';
 
 
+// @ts-ignore
 const routes: Routes = [
   {
-    path: 'gallery',
+    path: '',
     loadChildren: () => import('./gallery/gallery.module')
-      .then(mod => mod.GalleryModule)
+      .then(mod => mod.GalleryModule),
+    canActivate: [AuthGuard]
   },
   {
-    path: '',
+    path: 'auth',
     loadChildren: () => import('./auth/auth.module')
       .then(mod => mod.AuthModule)
   },
   {
-    path: '',
+    path: '**',
     redirectTo: '',
     pathMatch: 'full'
   }

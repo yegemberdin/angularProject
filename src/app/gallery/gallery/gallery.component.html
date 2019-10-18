@@ -5,10 +5,9 @@
   <button class="btn btn-lg btn-info" [class.active]="filterBy==='camping'" (click)="filterBy='camping'">Camping</button>
   <button class="btn btn-lg btn-info" [class.active]="filterBy==='library'" (click)="filterBy='library'">Library</button>
   <ul id="thumbnailsList">
-    <li *ngFor="let image of (visibleImages)" >
-      <a [routerLink] ="['/image', image.id]">
+    <li *ngFor="let image of (visibleImages | imageFilter:filterBy)" >
         <img src="{{image.url}}" class="tn" width="200" height="160">
-      </a>
+
     </li>
   </ul>
 </div>

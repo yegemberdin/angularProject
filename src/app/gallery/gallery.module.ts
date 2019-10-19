@@ -12,6 +12,6 @@ import {UserDataService} from '../user-data.service';
     CommonModule,
     GalleryRoutingModuleModule
   ],
-  providers: [ImgServiceService, UserDataService]
+  providers: [ImgServiceService]
 })
 export class GalleryModule { }

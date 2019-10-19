@@ -55,8 +55,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit = () => {
     this.user = new User(this.email.value, this.username.value, this.password.value);
+    console.log(this.user.username)
+    this.userDataService.userDataSubject.next(this.user.username);
     this.userService.register(this.user).subscribe( response => {
-      this.userDataService.setUserData(this.user);
       this.router.navigateByUrl('');
     }
   );

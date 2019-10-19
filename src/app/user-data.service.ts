@@ -6,15 +6,16 @@ import {User} from './User';
   providedIn: 'root'
 })
 export class UserDataService {
-  userData$: Observable<any>;
-  public userDataSubject = new BehaviorSubject<User>(null)
+  public userDataSubject = new BehaviorSubject('anonymous')
+  userData$: Observable<string>;
+
 
   constructor() {
     this.userData$ = this.userDataSubject.asObservable();
   }
-
-  setUserData = (user) => {
-    console.log(user);
-    this.userDataSubject.next(user);
-  }
+  //
+  // setUserData = (user) => {
+  //   console.log(user);
+  //   this.userDataSubject.next(user);
+  // }
 }

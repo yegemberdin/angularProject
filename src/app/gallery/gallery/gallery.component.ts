@@ -14,11 +14,17 @@ export class GalleryComponent implements OnChanges, OnInit {
   filterBy?: string = 'all';
   visibleImages: any[] = [];
 
-  public user: User;
+  public user: string;
   public loggedIn: boolean = false;
 
   constructor(private imageService: ImgServiceService, private userService: UserDataService) {
-
+    this.userService.userData$.subscribe((data) => {
+      console.log(data);
+      this.user = data;
+      if (this.user !== 'anonymous') {
+        this.loggedIn = true;
+      }
+    });
     // this.user = JSON.parse(localStorage.getItem('user'))
     // if (this.user) {
     //       this.loggedIn = true;
@@ -29,17 +35,11 @@ export class GalleryComponent implements OnChanges, OnInit {
 
   }
   ngOnInit(): void {
-    this.showData()
+    // this.showData()
   }
 
   showData() {
-    this.userService.userData$.subscribe((data) => {
-      console.log(data);
-      this.user = data;
-      // if (this.user) {
-      //   this.loggedIn = true;
-      // }
-    });
+
   }
 
   ngOnChanges() {

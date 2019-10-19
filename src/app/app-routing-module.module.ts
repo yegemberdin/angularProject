@@ -16,7 +16,7 @@ const routes: Routes = [
       .then(mod => mod.AuthModule)
   },
   {
-    path: '',
+    path: '**',
     redirectTo: '',
     pathMatch: 'full'
   }

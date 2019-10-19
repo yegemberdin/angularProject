@@ -19,6 +19,27 @@
   background: #424242;
 }
 
+.label {
+  color: black;
+  text-align: center;
+  font-family: monospace;
+}
+.alert {
+  width: 40%;
+  align-self:center ;
+  margin-left: 30%;
+  margin-top: 2%;
+}
+.label1 {
+  color: red;
+  font-family: monospace;
+}
+.label2 {
+  color: blue;
+  font-family: monospace;
+
+}
+
 
 /*.button_like_input {*/
 /*  font-family: monospace;*/

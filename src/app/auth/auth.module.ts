@@ -10,8 +10,8 @@ import {UserDataService} from '../user-data.service';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [{ path: '', component: AuthComponent },
-  {path: '/register', component: RegisterComponent},
-  {path: '/login', component: LoginComponent}];
+  {path: 'register', component: RegisterComponent},
+  {path: 'login', component: LoginComponent}];
 
 @NgModule({
   declarations: [AuthComponent, LoginComponent, RegisterComponent],
@@ -20,6 +20,6 @@ const routes: Routes = [{ path: '', component: AuthComponent },
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
-  providers: [UserService, UserDataService]
+  providers: [UserService]
 })
 export class AuthModule { }

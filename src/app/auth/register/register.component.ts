@@ -11,7 +11,24 @@ import {UserService} from '../../services/user.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-  private regForm: FormGroup;
+
+  private regForm: FormGroup = this.formBuilder.group({
+    emailFormControl: ['', [
+      Validators.required,
+      Validators.email
+    ]],
+    usernameFormControl: ['', [
+      Validators.required
+    ]],
+    passwordFormControl: ['', [
+      Validators.required,
+      Validators.minLength(6)
+    ]],
+    confirmPassword: ['', [
+      Validators.required
+    ]]
+  });
+
   public user: User;
 
 
@@ -19,22 +36,6 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.regForm = this.formBuilder.group({
-      emailFormControl: ['', [
-        Validators.required,
-        Validators.email
-      ]],
-      usernameFormControl: ['', [
-        Validators.required
-      ]],
-      passwordFormControl: ['', [
-        Validators.required,
-        Validators.minLength(6)
-      ]],
-      confirmPassword: ['', [
-        Validators.required
-      ]]
-    });
   }
 
   get email() {
@@ -55,8 +56,8 @@ export class RegisterComponent implements OnInit {
 
   onSubmit = () => {
     this.user = new User(this.email.value, this.username.value, this.password.value);
-    console.log(this.user.username)
-    this.userDataService.userDataSubject.next(this.user.username);
+    console.log(this.user.username);
+    this.userDataService.getUserDataSubject().next(this.user.username);
     this.userService.register(this.user).subscribe( response => {
       this.router.navigateByUrl('');
     }

@@ -21,3 +21,6 @@ ul.nav a:hover{
 .active>a{
   background-color: #616161;
 }
+.navbar-brand {
+  width: 100%;
+}

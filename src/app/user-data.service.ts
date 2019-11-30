@@ -6,12 +6,15 @@ import {User} from './User';
   providedIn: 'root'
 })
 export class UserDataService {
-  public userDataSubject = new BehaviorSubject('anonymous')
+  userDataSubject = new BehaviorSubject('anonymous')
   userData$: Observable<string>;
 
 
   constructor() {
     this.userData$ = this.userDataSubject.asObservable();
+  }
+  getUserDataSubject() {
+    return this.userDataSubject;
   }
   //
   // setUserData = (user) => {

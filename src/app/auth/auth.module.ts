@@ -6,7 +6,7 @@ import { RegisterComponent } from './register/register.component';
 import {ReactiveFormsModule} from '@angular/forms';
 // import { AuthRoutingModuleModule } from './auth-routing-module.module';
 import {UserService} from '../services/user.service';
-import {UserDataService} from '../user-data.service';
+import {UserDataService} from '../services/user-data.service';
 import {RouterModule, Routes} from '@angular/router';
 
 const routes: Routes = [{ path: '', component: AuthComponent },

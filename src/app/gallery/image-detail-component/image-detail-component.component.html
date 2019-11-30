@@ -9,23 +9,30 @@
       <span id="caption">
         {{image.caption}}
       </span>
-
-
   </div>
   <div class="col-md-12 caption-row">
-    <p>Created date : {{image.createdDate | dateFormat }}</p>
+      <p>Comment: {{comment}}</p>
   </div>
+
 
   <div class="col-md-12 caption-row">
     <button (click)="showComment = !showComment">
-      comment:  {{showComment ? 'delete' : 'add'}}
+      {{showComment ? 'Hide edit section' : 'Change comment'}}
     </button>
   </div>
 
   <div class="col-md-12 caption-row">
     <p *appUnless="!showComment">
-      edit comment
+      <input type="text" (keyup)="onCommentChange($event)" />
+      <button (click)="changeComment()">
+        Change comment
+      </button>
     </p>
+
+  </div>
+
+  <div class="col-md-12 caption-row">
+    <p>Created date : {{image.createdDate | dateFormat }}</p>
   </div>
 
 </div>

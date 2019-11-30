@@ -1,7 +1,7 @@
 import {Component, OnInit, Input, OnChanges} from '@angular/core';
-import {ImgServiceService} from '../../img-service.service';
+import {ImgServiceService} from '../../services/img-service.service';
 import {User} from '../../User';
-import {UserDataService} from '../../user-data.service';
+import {UserDataService} from '../../services/user-data.service';
 import {UserService} from '../../services/user.service';
 
 @Component({
@@ -30,7 +30,7 @@ export class GalleryComponent implements OnChanges, OnInit {
     //       this.loggedIn = true;
     //     }
 
-    console.log(this.filterBy);
+    console.log(new Date());
     this.visibleImages = this.imageService.getImages();
 
   }

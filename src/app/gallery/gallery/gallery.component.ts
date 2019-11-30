@@ -13,7 +13,6 @@ import {UserService} from '../../services/user.service';
 export class GalleryComponent implements OnChanges, OnInit {
   filterBy?: string = 'all';
   visibleImages: any[] = [];
-
   public user: string;
   public loggedIn: boolean = false;
 

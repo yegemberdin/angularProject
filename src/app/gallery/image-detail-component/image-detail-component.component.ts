@@ -7,10 +7,12 @@ import {ActivatedRoute} from '@angular/router';
   templateUrl: './image-detail-component.component.html',
   styleUrls: ['./image-detail-component.component.css']
 })
+
 export class ImageDetailComponentComponent implements OnInit {
   image: any;
   currentDate: any;
-
+  showComment = false;
+  
   constructor(private imageService: ImgServiceService, private route: ActivatedRoute) {
     this.currentDate = 'Sat Nov 29 2019 16:46:37 GMT+0600 (Восточный Казахстан)';
   }

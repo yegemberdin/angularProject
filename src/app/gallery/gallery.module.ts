@@ -7,9 +7,11 @@ import {ImageFilterPipe} from '../shared/filter.pipe';
 import {UserDataService} from '../services/user-data.service';
 import { ImageDetailComponentComponent } from './image-detail-component/image-detail-component.component';
 import {DateFormatPipe} from '../shared/date-format.pipe';
+import { ImageBoxShadowDirective } from './directives/image-box-shadow.directive';
+import { CommentOpenDirective } from './directives/comment-open.directive';
 
 @NgModule({
-  declarations: [GalleryComponent, ImageFilterPipe, ImageDetailComponentComponent, DateFormatPipe],
+  declarations: [GalleryComponent, ImageFilterPipe, ImageDetailComponentComponent, DateFormatPipe, ImageBoxShadowDirective, CommentOpenDirective],
   imports: [
     CommonModule,
     GalleryRoutingModuleModule

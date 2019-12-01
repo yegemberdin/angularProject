@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import {AuthGuard} from './guards';
+import {NotFoundPageComponent} from './shared/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -15,10 +16,11 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module')
       .then(mod => mod.AuthModule)
   },
+  { path: '404', component: NotFoundPageComponent },
+
   {
     path: '**',
-    redirectTo: '',
-    pathMatch: 'full'
+    redirectTo: '/404',
   }
 ];
 

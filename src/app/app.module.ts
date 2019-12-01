@@ -9,11 +9,16 @@ import {AuthGuard} from './guards/index';
 import {UserService} from './services/user.service';
 import {AlertService} from './services/alert.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HTTP_INTERCEPTORS} from '@angular/common/http';
+import {AuthInterceptor} from './AuthInterceptor';
+import {NotFoundPageComponent} from './shared/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    NotFoundPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -21,9 +26,14 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     FormsModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
-
   ],
-  providers: [AuthGuard, UserService, AlertService ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+    AuthGuard, UserService, AlertService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

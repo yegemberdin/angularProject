@@ -9,12 +9,16 @@ import { ImageDetailComponentComponent } from './image-detail-component/image-de
 import {DateFormatPipe} from '../shared/date-format.pipe';
 import { ImageBoxShadowDirective } from './directives/image-box-shadow.directive';
 import { CommentOpenDirective } from './directives/comment-open.directive';
+import {NgxStarsModule} from 'ngx-stars';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {BrowserModule} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [GalleryComponent, ImageFilterPipe, ImageDetailComponentComponent, DateFormatPipe, ImageBoxShadowDirective, CommentOpenDirective],
   imports: [
     CommonModule,
-    GalleryRoutingModuleModule
+    GalleryRoutingModuleModule,
+    NgxStarsModule,
   ],
   providers: [ImgServiceService, ImageFilterPipe, DateFormatPipe]
 })

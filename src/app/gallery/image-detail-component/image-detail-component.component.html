@@ -1,6 +1,6 @@
 <div class="row">
   <div class=col-md-12>
-    <div  appImageSize [ngStyle]="{'background-image':'url('+ image.url +')'}" class="img-container paper">
+    <div (click)="rotate()" [@rotatedState]='state' appImageSize [ngStyle]="{'background-image':'url('+ image.url +')'}" class="img-container paper">
     </div>
   </div>
 </div>
@@ -11,14 +11,15 @@
       </span>
   </div>
   <div class="col-md-12 caption-row">
-      <p>Comment: {{comment}}</p>
   </div>
 
-
   <div class="col-md-12 caption-row">
+    <p>Comment: {{comment}}</p>
+
     <button (click)="showComment = !showComment">
       {{showComment ? 'Hide edit section' : 'Change comment'}}
     </button>
+
   </div>
 
   <div class="col-md-12 caption-row">
@@ -33,6 +34,17 @@
 
   <div class="col-md-12 caption-row">
     <p>Created date : {{image.createdDate | dateFormat }}</p>
+    <p>rating of this place:</p>
+    <div style="width:100px; margin:0 auto;">
+      <ngx-stars [readonly]="false" [maxStars]="5" [initialStars]="3.5"></ngx-stars>
+    </div>
   </div>
 
+
+
+
+</div>
+
+
+<div style="alignment-baseline: middle">
 </div>

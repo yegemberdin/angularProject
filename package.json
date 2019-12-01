@@ -32,6 +32,7 @@
     "jquery": "^3.4.1",
     "ng2-bootstrap": "^1.6.3",
     "ngx-bootstrap": "^5.2.0",
+    "ngx-stars": "^1.4.3",
     "popper.js": "^1.14.7",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",

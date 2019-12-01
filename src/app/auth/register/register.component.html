@@ -1,28 +1,28 @@
 <h1  class="label"> Authenticate to visit gallery </h1>
 <form class="card" [formGroup]="regForm" (ngSubmit)="onSubmit()" id="register_form">
   <fieldset>
-    <legend> Registration </legend>
+    <legend style="color: white; margin-left: 15px"> Registration </legend>
     <div class="col-md-12">
-      <label class="form-label">Email </label>
+      <label class="form-label" style="color: white" >Email </label>
       <input  name="email"  class="form-control"  formControlName="emailFormControl" />
   <div class="input_message" *ngIf="email.invalid && email.touched">Email is invalid</div>
     </div>
     <div class="col-md-12">
-      <label class="form-label">Username </label>
+      <label class="form-label" style="color: white">Username </label>
       <input  name="email" class="form-control" formControlName="usernameFormControl" />
     </div>
     <div class="col-md-12">
-      <label class="form-label">Password </label>
+      <label class="form-label" style="color: white">Password </label>
       <input name="password"   class="form-control" type="password" formControlName="passwordFormControl" />
   <div class="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
     </div>
     <div class="col-md-12">
-      <label class="form-label">Confirm Password </label>
+      <label class="form-label" style="color: white">Confirm Password </label>
       <input name="password"   class="form-control" type="password"  formControlName="confirmPassword" />
   <div class="input_message" *ngIf="regForm.get('passwordFormControl').value !==
         regForm.get('confirmPassword').value || (confirmPassword.touched &&
-            regForm.get('confirmPassword').value === null)" >Passwords are not the same</div>
+            regForm.get('confirmPassword').value === null)" style="color: red; font-family: monospace;" >Passwords are not the same</div>
     </div>
-    <button class="btn btn-success">Register</button>
+    <button class="btn btn-success" style="margin-left: 15px; margin-top: 15px; margin-bottom: 15px">Register</button>
   </fieldset>
 </form>

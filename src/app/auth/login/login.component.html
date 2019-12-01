@@ -1,21 +1,22 @@
 <form class="card"  [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
   <fieldset>
-    <legend> Login </legend>
+    <legend style="color: white; margin-left: 15px"> Login </legend>
     <div class="col-md-12">
-      <label class="form-label">Username </label>
+      <label class="form-label" style="color: white">Username </label>
   <input  name="email"  class="form-control" formControlName="usernameFormControl" />
     </div>
     <div class="col-md-12">
-      <label class="form-label">Password </label>
+      <label class="form-label" style="color: white">Password </label>
       <input name="password"   class="form-control" type="password" formControlName="passwordFormControl" />
       <div *ngIf="password.invalid && !logForm.invalid" class="invalid-feedback">
         <div *ngIf="password?.errors.required">
           The password field is required
         </div>
       </div>
-  <div id="input_message" *ngIf="password.invalid && password.touched">Password is invalid</div>
+  <div id="input_message" *ngIf="password.invalid && password.touched" style="color: red;
+  font-family: monospace;">Password is invalid</div>
     </div>
-    <button class="btn btn-success">Submit</button>
+    <button class="btn btn-success" style="margin-top: 15px; margin-bottom: 15px; margin-left: 15px">Submit</button>
 
   </fieldset>
 </form>

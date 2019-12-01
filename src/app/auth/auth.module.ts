@@ -8,18 +8,21 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {UserService} from '../services/user.service';
 import {UserDataService} from '../services/user-data.service';
 import {RouterModule, Routes} from '@angular/router';
+import {ForgotPasswordFormComponent} from './forgot-password/forgot-password-form.component';
 
 const routes: Routes = [{ path: '', component: AuthComponent },
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent}];
 
 @NgModule({
-  declarations: [AuthComponent, LoginComponent, RegisterComponent],
+  declarations: [AuthComponent, LoginComponent, RegisterComponent, ForgotPasswordFormComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)
   ],
+  entryComponents:[ForgotPasswordFormComponent],
+
   providers: [UserService]
 })
 export class AuthModule { }

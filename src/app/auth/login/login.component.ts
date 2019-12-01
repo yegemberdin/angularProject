@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, ComponentFactoryResolver, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../User';
 import {UserDataService} from '../../services/user-data.service';
 import {Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
-import {validate} from 'codelyzer/walkerFactory/walkerFn';
+import {ForgotPasswordFormComponent} from '../forgot-password/forgot-password-form.component';
 
 @Component({
   selector: 'app-login',
@@ -12,12 +12,19 @@ import {validate} from 'codelyzer/walkerFactory/walkerFn';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  isForgot = false;
   private logForm: FormGroup;
   public user: User;
 
 
-  constructor(private formBuilder: FormBuilder, private userDataService: UserDataService, private router: Router, private userService: UserService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private userDataService: UserDataService,
+    private router: Router, private userService: UserService,
+    private componentFactoryResolver: ComponentFactoryResolver) {
   }
+
+  @ViewChild('container', {read: ViewContainerRef}) viewContainerRef: ViewContainerRef;
 
   ngOnInit() {
     this.logForm = this.formBuilder.group({
@@ -54,5 +61,12 @@ export class LoginComponent implements OnInit {
       }
     });
 
+  };
+
+  forgotPassword() {
+    this.isForgot = true;
+    const factory = this.componentFactoryResolver.resolveComponentFactory(ForgotPasswordFormComponent);
+    const ref = this.viewContainerRef.createComponent(factory);
+    ref.changeDetectorRef.detectChanges();
   }
 }

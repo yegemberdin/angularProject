@@ -1,4 +1,4 @@
-<form class="card"  [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
+<form *ngIf="!isForgot" class="card"  [formGroup]="logForm" (ngSubmit)="onLogin()" id="login_form">
   <fieldset>
     <legend style="color: white; margin-left: 15px"> Login </legend>
     <div class="col-md-12">
@@ -19,4 +19,8 @@
     <button class="btn btn-success" style="margin-top: 15px; margin-bottom: 15px; margin-left: 15px">Submit</button>
 
   </fieldset>
+  <button  style="color: bisque" class="btn btn-l " (click)="forgotPassword()">Forgot password?</button>
+
 </form>
+<div class="forgot" #container></div>
+

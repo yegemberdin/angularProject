@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {ForgotPasswordFormComponent} from '../forgot-password/forgot-password-form.component';
 import {first} from 'rxjs/operators';
+import {Log} from '@angular/core/testing/src/logger';
 
 @Component({
   selector: 'app-login',
@@ -69,7 +70,10 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigate([this.returnUrl]);
+          //this.router.navigate([this.returnUrl]);
+          console.log("nazekalogin")
+          this.router.navigateByUrl('/');
+
         },
         error => {
           this.error = error;

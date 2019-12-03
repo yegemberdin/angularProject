@@ -66,7 +66,6 @@ export class GalleryComponent implements OnChanges, OnInit {
 
   constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService) {
     this.userService.userData$.subscribe((data) => {
-      console.log(data);
       this.user = data;
       if (this.user !== 'anonymous') {
         this.loggedIn = true;

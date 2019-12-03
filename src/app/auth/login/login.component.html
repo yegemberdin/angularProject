@@ -17,7 +17,7 @@
   font-family: monospace;">Password is invalid</div>
     </div>
     <button class="btn btn-success" style="margin-top: 15px; margin-bottom: 15px; margin-left: 15px">Submit</button>
-
+    <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
   </fieldset>
   <button  style="color: bisque" class="btn btn-l " (click)="forgotPassword()">Forgot password?</button>
 

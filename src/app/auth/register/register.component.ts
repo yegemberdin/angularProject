@@ -55,13 +55,13 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit = () => {
-    this.user = new User(this.email.value, this.username.value, this.password.value);
-    console.log(this.user.username);
-    this.userDataService.getUserDataSubject().next(this.user.username);
-    this.userService.register(this.user).subscribe( response => {
-      this.router.navigateByUrl('');
-    }
-  );
+  //   this.user = new User(this.email.value, this.username.value, this.password.value);
+  //   console.log(this.user.username);
+  //   this.userDataService.getUserDataSubject().next(this.user.username);
+  //   this.userService.register(this.user).subscribe( response => {
+  //     this.router.navigateByUrl('');
+  //   }
+  // );
   }
 
 

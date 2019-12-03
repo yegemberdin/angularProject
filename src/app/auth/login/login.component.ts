@@ -2,9 +2,10 @@ import {AfterViewInit, Component, ComponentFactoryResolver, OnInit, ViewChild, V
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {User} from '../../User';
 import {UserDataService} from '../../services/user-data.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {UserService} from '../../services/user.service';
 import {ForgotPasswordFormComponent} from '../forgot-password/forgot-password-form.component';
+import {first} from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -15,10 +16,12 @@ export class LoginComponent implements OnInit {
   isForgot = false;
   private logForm: FormGroup;
   public user: User;
-
+  returnUrl: string;
+  error = '';
 
   constructor(
     private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
     private userDataService: UserDataService,
     private router: Router, private userService: UserService,
     private componentFactoryResolver: ComponentFactoryResolver) {
@@ -37,6 +40,8 @@ export class LoginComponent implements OnInit {
         Validators.minLength(6)
       ]]
     });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+
   }
 
   get email() {
@@ -53,15 +58,23 @@ export class LoginComponent implements OnInit {
 
 
   onLogin = () => {
-    this.user = new User(this.email.value, this.username.value, this.password.value);
     this.userDataService.userDataSubject.next(this.username.value);
-    this.userService.login(this.username.value, this.password.value).subscribe(response => {
-      if (response) {
-        this.router.navigateByUrl('/gallery');
-      }
-    });
+    // this.userService.login(this.username.value, this.password.value).subscribe(response => {
+    //   if (response) {
+    //     this.router.navigateByUrl('/gallery');
+    //   }
+    // });
 
-  };
+    this.userService.login(this.username.value, this.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigate([this.returnUrl]);
+        },
+        error => {
+          this.error = error;
+        });
+  }
 
   forgotPassword() {
     this.isForgot = true;

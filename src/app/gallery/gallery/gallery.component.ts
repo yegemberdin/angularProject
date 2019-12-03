@@ -4,6 +4,8 @@ import {User} from '../../User';
 import {UserDataService} from '../../services/user-data.service';
 import {UserService} from '../../services/user.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
+import {first} from 'rxjs/operators';
+import {GalleryService} from '../../services/gallery.service';
 
 @Component({
   selector: 'app-gallery',
@@ -32,6 +34,7 @@ export class GalleryComponent implements OnChanges, OnInit {
   currentState2 = 'initial';
   currentState3 = 'initial';
   currentState4 = 'initial';
+  loading = false;
 
 
   changeState1() {
@@ -61,7 +64,7 @@ export class GalleryComponent implements OnChanges, OnInit {
     this.currentState3 = this.currentState3 === 'final' ? 'initial' : 'initial';
   }
 
-  constructor(private imageService: ImgServiceService, private userService: UserDataService) {
+  constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService) {
     this.userService.userData$.subscribe((data) => {
       console.log(data);
       this.user = data;
@@ -79,11 +82,9 @@ export class GalleryComponent implements OnChanges, OnInit {
 
   }
   ngOnInit(): void {
-    // this.showData()
-  }
-
-  showData() {
-
+    this.galleryService.getAll().pipe(first()).subscribe(users => {
+      this.loading = false;
+    });
   }
 
   ngOnChanges() {

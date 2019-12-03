@@ -71,12 +71,6 @@ export class GalleryComponent implements OnChanges, OnInit {
         this.loggedIn = true;
       }
     });
-    // this.user = JSON.parse(localStorage.getItem('user'))
-    // if (this.user) {
-    //       this.loggedIn = true;
-    //     }
-
-    console.log(new Date());
     this.visibleImages = this.imageService.getImages();
 
   }

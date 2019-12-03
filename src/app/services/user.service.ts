@@ -23,7 +23,6 @@ export class UserService {
   login(username: string, password: string) {
     return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, {username, password})
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;
@@ -33,7 +32,6 @@ export class UserService {
   register(userData: User): Observable<any> {
     return this.http.post<any>(`${environment.apiUrl}/users/authenticate`, {userData})
       .pipe(map(user => {
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('currentUser', JSON.stringify(user));
         this.currentUserSubject.next(user);
         return user;
@@ -42,27 +40,11 @@ export class UserService {
   }
 
   logout() {
-    // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
   }
 }
 
-// import {Injectable} from '@angular/core';
-// import {Observable, of} from 'rxjs';
-// import {AlertService} from './alert.service';
-// import {User} from '../User';
-//
-// @Injectable({
-//   providedIn: 'root',
-// })
-//
-// export class UserService {
-//   constructor(public alertService: AlertService) {
-//   }
-//
-//   private user: User;
-//
 //   login(username: string, password: string): Observable<any> {
 //     this.user = JSON.parse(localStorage.getItem('user'));
 //     if (this.user.username === username && this.user.password === password) {
@@ -81,4 +63,4 @@ export class UserService {
 //     localStorage.setItem('user', JSON.stringify(userData));
 //     return of(true);
 //   }
-// }
+

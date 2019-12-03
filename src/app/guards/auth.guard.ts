@@ -6,7 +6,7 @@ import {UserService} from '../services/user.service';
 export class AuthGuard implements CanActivate {
   constructor(private router: Router, private authenticationService: UserService
   ) {
-  };
+  }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     const currentUser = this.authenticationService.currentUserValue;

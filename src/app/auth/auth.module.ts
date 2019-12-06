@@ -23,6 +23,6 @@ const routes: Routes = [{ path: '', component: AuthComponent },
   ],
   entryComponents:[ForgotPasswordFormComponent],
 
-  providers: [UserService]
+  providers: []
 })
 export class AuthModule { }

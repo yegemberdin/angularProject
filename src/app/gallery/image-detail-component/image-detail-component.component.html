@@ -14,10 +14,16 @@
   </div>
 
   <div class="col-md-12 caption-row">
-    <p>Comment: {{comment}}</p>
+    <p *ngIf="hasComments">Comments:</p>
+    <ul class="list-group" *ngIf="hasComments">
+      <li  *ngFor="let comment of comments" class="list-group-item" >
+        {{ comment }}
+      </li>
+    </ul>
+    <p *ngIf="!hasComments">No comments</p>
 
-    <button (click)="showComment = !showComment">
-      {{showComment ? 'Hide edit section' : 'Change comment'}}
+    <button style="margin-top: 16px" (click)="showComment = !showComment">
+      {{showComment ? 'Hide section' : 'Add comment'}}
     </button>
 
   </div>
@@ -25,8 +31,8 @@
   <div class="col-md-12 caption-row">
     <p *appUnless="!showComment">
       <input type="text" (keyup)="onCommentChange($event)" />
-      <button (click)="changeComment()">
-        Change comment
+      <button  style="margin-left: 16px" (click)="changeComment()">
+        Add
       </button>
     </p>
 

@@ -79,7 +79,7 @@ const IMAGES = [
     'id': 6,
     'category': 'camping',
     'caption': 'Camping Trip \'17\'',
-    'url': 'https://www.backpackerguide.nz/wp-content/uploads/2017/10/new-zealand-1882703_1280.jpg',
+    'url': 'https://www.godsavethepoints.com/wp-content/uploads/2019/03/84721339_m.jpg',
     'createdDate': 'Sat Nov 18 2019 11:40:37 GMT+0600 (Восточный Казахстан)',
     'comment': 'I was here with my classmates'
 

@@ -12,9 +12,10 @@ import { CommentOpenDirective } from './directives/comment-open.directive';
 import {NgxStarsModule} from 'ngx-stars';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {BrowserModule} from '@angular/platform-browser';
+import { MyCabinetComponent } from './my-cabinet/my-cabinet.component';
 
 @NgModule({
-  declarations: [GalleryComponent, ImageFilterPipe, ImageDetailComponentComponent, DateFormatPipe, ImageBoxShadowDirective, CommentOpenDirective],
+  declarations: [GalleryComponent, ImageFilterPipe, ImageDetailComponentComponent, DateFormatPipe, ImageBoxShadowDirective, CommentOpenDirective, MyCabinetComponent],
   imports: [
     CommonModule,
     GalleryRoutingModuleModule,

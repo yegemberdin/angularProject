@@ -10,8 +10,7 @@
         {{image.caption}}
       </span>
   </div>
-  <div class="col-md-12 caption-row">
-  </div>
+
 
   <div class="col-md-12 caption-row">
     <p *ngIf="hasComments">Comments:</p>
@@ -39,18 +38,19 @@
   </div>
 
   <div class="col-md-12 caption-row">
+    <button  style="margin-left: 16px; margin-top: 16px" (click)="addImage()">
+      Add image to your collection
+    </button>
+  </div>
+
+  <div class="col-md-12 caption-row">
     <p>Created date : {{image.createdDate | dateFormat }}</p>
     <p>rating of this place:</p>
     <div style="width:100px; margin:0 auto;">
       <ngx-stars [readonly]="false" [maxStars]="5" [initialStars]="3.5"></ngx-stars>
     </div>
-  </div>
 
-
-
+    </div>
 
 </div>
 
-
-<div style="alignment-baseline: middle">
-</div>

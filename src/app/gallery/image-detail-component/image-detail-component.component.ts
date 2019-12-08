@@ -38,13 +38,13 @@ export class ImageDetailComponentComponent implements OnInit {
     this.image = this.imageService.getImage(
       +this.route.snapshot.params['id']
     );
-    let id = this.route.snapshot.params['id']
+    let id = this.route.snapshot.params['id'];
     if (localStorage.getItem('comments' + id) === null) {
       this.hasComments = false;
     } else {
       let retrievedData = localStorage.getItem('comments' + id);
       let retrievedComments = JSON.parse(retrievedData) as Array<string>;
-      this.comments = retrievedComments
+      this.comments = retrievedComments;
       this.hasComments = true;
     }
   }
@@ -56,8 +56,8 @@ export class ImageDetailComponentComponent implements OnInit {
   }
 
   changeComment() {
-    this.hasComments = true
-    let id = this.route.snapshot.params['id']
+    this.hasComments = true;
+    let id = this.route.snapshot.params['id'];
     if (localStorage.getItem('comments' + id) === null) {
       let comments = [];
       comments.push(this.changedComment);
@@ -71,7 +71,37 @@ export class ImageDetailComponentComponent implements OnInit {
       localStorage.setItem('comments' + id, JSON.stringify(retrievedComments));
       this.comments = retrievedComments;
     }
-    // this.imageService.setComment(id, this.comment);
+  }
+
+  addImage() {
+    let id = this.route.snapshot.params['id'];
+    let user = JSON.parse(localStorage.getItem('currentUser'));
+    let username = user.username;
+    if (localStorage.getItem('myImages' + username) === null) {
+      let imgs = [];
+      imgs.push(this.image);
+      localStorage.setItem('myImages' + username, JSON.stringify(imgs));
+      window.confirm('Image added to your profile');
+    } else {
+      let retrievedData = localStorage.getItem('myImages' + username);
+      let retrievedMyImages = JSON.parse(retrievedData);
+      let duplicate = false;
+      retrievedMyImages.forEach((image, index) => {
+        if (image.id.toString() === id) {
+          duplicate = true;
+        } else {
+          duplicate = false;
+        }
+      });
+      if (duplicate) {
+        window.confirm('you have already this image');
+      } else {
+        localStorage.removeItem('myImages' + username);
+        retrievedMyImages.push(this.image);
+        localStorage.setItem('myImages' + username, JSON.stringify(retrievedMyImages));
+        window.confirm('Image added to your profile');
+      }
+    }
   }
 
 }

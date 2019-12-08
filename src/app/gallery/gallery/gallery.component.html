@@ -1,5 +1,8 @@
-<div class="header-right" *ngIf="user"><p id="userGreeting">Hello: {{user}}</p></div>
-<div class="row">
+<div class="header-right" *ngIf="user">
+  <p id="userGreeting">Hello: {{user}}</p>
+  <a [routerLink] ="['/myCabinet']"> Go to my profile</a>
+</div>
+<div style="margin-top: 16px" class="row">
   <button (click)="changeState1()" [@balloonEffect]=currentState1 class="btn btn-lg btn-info" [class.active]="filterBy==='all'" (click)="filterBy='all'">All</button>
   <button (click)="changeState2()" [@balloonEffect]=currentState2  class="btn btn-lg btn-info" [class.active]="filterBy==='boats'" (click)="filterBy='boats'">Boats</button>
   <button (click)="changeState3()" [@balloonEffect]=currentState3 class="btn btn-lg btn-info" [class.active]="filterBy==='camping'" (click)="filterBy='camping'">Camping</button>

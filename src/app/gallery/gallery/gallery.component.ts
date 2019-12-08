@@ -6,6 +6,7 @@ import {UserService} from '../../services/user.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {first} from 'rxjs/operators';
 import {GalleryService} from '../../services/gallery.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -64,7 +65,7 @@ export class GalleryComponent implements OnChanges, OnInit {
     this.currentState3 = this.currentState3 === 'final' ? 'initial' : 'initial';
   }
 
-  constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService) {
+  constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService, private router: Router) {
     this.userService.userData$.subscribe((data) => {
       this.user = data;
       if (this.user !== 'anonymous') {
@@ -83,5 +84,6 @@ export class GalleryComponent implements OnChanges, OnInit {
   ngOnChanges() {
     this.visibleImages = this.imageService.getImages();
   }
+
 }
 

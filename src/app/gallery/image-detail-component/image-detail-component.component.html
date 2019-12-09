@@ -11,6 +11,12 @@
       </span>
   </div>
 
+  <div class="col-md-12 caption-row">
+    <p style="font-style: italic">How many people like this:</p>
+    <p style="color: #0D47A1">{{numberOfLikes}}</p>
+    <img  (click)="like()" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQvod7evTRQiZD28fuvS4cDPJmcpIhe7kSTQBKRKLj77JQPu7l&s" style="width: 70px; height: 70px"/>
+
+  </div>
 
   <div class="col-md-12 caption-row">
     <p *ngIf="hasComments">Comments:</p>

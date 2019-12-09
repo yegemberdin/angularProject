@@ -4,9 +4,11 @@ import {RouterModule, Routes} from '@angular/router';
 import {GalleryComponent} from './gallery/gallery.component';
 import {ImageDetailComponentComponent} from './image-detail-component/image-detail-component.component';
 import {MyCabinetComponent} from './my-cabinet/my-cabinet.component';
+import {ImageResolverResolver} from './imageResolver.resolver';
 
 const galleryRoutes: Routes = [
-  { path: '', component: GalleryComponent },
+  { path: '', component: GalleryComponent,
+  resolve: { images: ImageResolverResolver }},
   { path: 'image/:id', component: ImageDetailComponentComponent },
   { path: 'myCabinet', component: MyCabinetComponent}
 ]
@@ -18,6 +20,9 @@ const galleryRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+    ImageResolverResolver
   ]
 })
 export class GalleryRoutingModuleModule { }

@@ -6,7 +6,7 @@ import {UserService} from '../../services/user.service';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 import {first} from 'rxjs/operators';
 import {GalleryService} from '../../services/gallery.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-gallery',
@@ -28,7 +28,7 @@ import {Router} from '@angular/router';
 
 export class GalleryComponent implements OnChanges, OnInit {
   filterBy?: string = 'all';
-  visibleImages: any[] = [];
+  visibleImages: any  = [];
   public user: string;
   public loggedIn: boolean = false;
   currentState1 = 'initial';
@@ -67,7 +67,7 @@ export class GalleryComponent implements OnChanges, OnInit {
     this.currentState3 = this.currentState3 === 'final' ? 'initial' : 'initial';
   }
 
-  constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService, private router: Router) {
+  constructor(private imageService: ImgServiceService, private userService: UserDataService, private galleryService: GalleryService, private router: Router, private route: ActivatedRoute) {
     this.userService.userData$.subscribe((data) => {
       this.user = data;
       if (this.user !== 'anonymous') {
@@ -75,7 +75,10 @@ export class GalleryComponent implements OnChanges, OnInit {
       }
 
     });
-    this.visibleImages = this.imageService.getImages();
+    console.log('nazeka');
+    console.log(this.route.snapshot.data)
+
+    this.visibleImages = this.route.snapshot.data.images;
 
   }
 

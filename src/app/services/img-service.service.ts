@@ -1,5 +1,6 @@
 import {Injectable} from '@angular/core';
 import * as $ from 'jquery';
+import {Observable} from 'rxjs';
 
 
 @Injectable({

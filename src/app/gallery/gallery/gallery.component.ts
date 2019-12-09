@@ -52,12 +52,14 @@ export class GalleryComponent implements OnChanges, OnInit {
     this.currentState3 = this.currentState3 === 'final' ? 'initial' : 'initial';
     this.currentState4 = this.currentState4 === 'final' ? 'initial' : 'initial';
   }
+
   changeState3() {
     this.currentState3 = this.currentState3 === 'initial' ? 'final' : 'initial';
     this.currentState1 = this.currentState1 === 'final' ? 'initial' : 'initial';
     this.currentState2 = this.currentState2 === 'final' ? 'initial' : 'initial';
     this.currentState4 = this.currentState4 === 'final' ? 'initial' : 'initial';
   }
+
   changeState4() {
     this.currentState4 = this.currentState4 === 'initial' ? 'final' : 'initial';
     this.currentState1 = this.currentState1 === 'final' ? 'initial' : 'initial';
@@ -71,14 +73,22 @@ export class GalleryComponent implements OnChanges, OnInit {
       if (this.user !== 'anonymous') {
         this.loggedIn = true;
       }
+
     });
     this.visibleImages = this.imageService.getImages();
 
   }
+
   ngOnInit(): void {
     this.galleryService.getAll().pipe(first()).subscribe(users => {
       this.loading = false;
     });
+    if (this.user === 'anonymous') {
+      let user = JSON.parse(localStorage.getItem('currentUser'));
+      let username = user.username;
+      this.user = username;
+    }
+
   }
 
   ngOnChanges() {
